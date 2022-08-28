@@ -74,11 +74,12 @@ function ServiceProducts() {
       method: "DELETE",
       url: "https://nike0403.herokuapp.com/cart/delete",
       headers: {
-        Authorization: token,
-        id: {
-          _id: id,
-        },
+        'Authorization': `bearer ${token}`,
+        
       },
+      id: {
+        "_id": id
+      }
     });
   };
   this.updateCartByAdmin = function (token, id, satus) {

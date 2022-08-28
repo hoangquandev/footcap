@@ -32,10 +32,10 @@ const login = () => {
         .then(function (res) {
             localStorage.setItem("LOGIN", JSON.stringify(res.data));
             localStorage.setItem("LISTCART", JSON.stringify(listCart));
-            let data=JSON.parse(localStorage.getItem("LOGIN"))
-            console.log(data);
+            let data=JSON.parse(localStorage.getItem("LOGIN")).user.userType;
+            // console.log(data);
             if(data==="admin"){
-                window.location.assign("../admin")
+                window.location.assign("../admin/index.html")
             }else{
                 window.location.assign("../view/index.html");
             }

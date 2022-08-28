@@ -70,7 +70,6 @@ function removeProductCart(index) {
   let listLocal = JSON.parse(localStorage.getItem("LISTCART"));
 
   listLocal.splice(index, 1);
-  console.log(listLocal);
   setLocalStorage(listLocal);
   alert("Remove success");
   window.location.reload();
@@ -83,9 +82,29 @@ function setLocalStorage(listLocal) {
 function noCart() {
   let listLocal = JSON.parse(localStorage.getItem("LISTCART"));
   // console.log(listLocal);
-  let content = `<p>Your cart is empty</p>`;
+  let content = `
+                  <div style="height:400px; margin-top:90px">
+                      <h1 style="color:green">Your cart is empty ...</h1>
+                      <a style="color:blue; font-size:20px" href="./store.html">Click here to Store now!</a>
+                  </div>
+                `;
   if (listLocal.length === 0) {
     getEle("cart").innerHTML = content;
   }
 }
 noCart();
+
+function showQty() {
+  let listLocal = JSON.parse(localStorage.getItem("LISTCART"));
+  let quantity = 0;
+  if (listLocal) {
+    for (let i = 0; i < listLocal.length; i++) {
+      quantity += listLocal[i].quantity;
+    }
+    console.log(quantity);
+    getEle("qtyProduct").innerHTML = quantity;
+  } else {
+    getEle("qtyProduct").innerHTML = 0;
+  }
+}
+showQty();

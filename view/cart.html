@@ -47,11 +47,15 @@
 
   <header class="header" data-header>
     <div class="container">
-
       <div class="overlay" data-overlay></div>
 
-      <a href="#" class="logo">
-        <img src="../assets/images/logo.svg" width="160" height="50" alt="Footcap logo">
+      <a href="./index.html" class="logo">
+        <img
+          src="../assets/images/logo.svg"
+          width="160"
+          height="50"
+          alt="Footcap logo"
+        />
       </a>
 
       <button class="nav-open-btn" data-nav-open-btn aria-label="Open Menu">
@@ -59,19 +63,26 @@
       </button>
 
       <nav class="navbar" data-navbar>
-
-        <button class="nav-close-btn" data-nav-close-btn aria-label="Close Menu">
+        <button
+          class="nav-close-btn"
+          data-nav-close-btn
+          aria-label="Close Menu"
+        >
           <ion-icon name="close-outline"></ion-icon>
         </button>
 
-        <a href="#" class="logo">
-          <img src="../assets/images/logo.svg" width="190" height="50" alt="Footcap logo">
+        <a href="./index.html" class="logo">
+          <img
+            src="../assets/images/logo.svg"
+            width="190"
+            height="50"
+            alt="Footcap logo"
+          />
         </a>
 
         <ul class="navbar-list">
-
           <li class="navbar-item">
-            <a href="#" class="navbar-link">Home</a>
+            <a href="./index.html" class="navbar-link">Home</a>
           </li>
 
           <li class="navbar-item">
@@ -79,7 +90,7 @@
           </li>
 
           <li class="navbar-item">
-            <a href="#" class="navbar-link">Products</a>
+            <a href="./store.html" class="navbar-link">Products</a>
           </li>
 
           <li class="navbar-item">
@@ -93,11 +104,9 @@
           <li class="navbar-item">
             <a href="#" class="navbar-link">Contact</a>
           </li>
-
         </ul>
 
         <ul class="nav-action-list">
-
           <li>
             <button class="nav-action-btn">
               <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
@@ -107,7 +116,7 @@
           </li>
 
           <li>
-            <a href="#" class="nav-action-btn">
+            <a href="./detailUser.html" class="nav-action-btn">
               <ion-icon name="person-outline" aria-hidden="true"></ion-icon>
 
               <span class="nav-action-text">Login / Register</span>
@@ -120,24 +129,25 @@
 
               <span class="nav-action-text">Wishlist</span>
 
-              <data class="nav-action-badge" value="5" aria-hidden="true">5</data>
+              <data class="nav-action-badge" value="5" aria-hidden="true"
+                >5</data
+              >
             </button>
           </li>
 
           <li>
-            <button class="nav-action-btn">
+            <a href="./cart.html" class="nav-action-btn">
               <ion-icon name="bag-outline" aria-hidden="true"></ion-icon>
 
-              <data class="nav-action-text" value="318.00">Basket: <strong>$318.00</strong></data>
+              <!-- <data class="nav-action-text" value="318.00">Basket: <strong>$318.00</strong></data> -->
 
-              <data class="nav-action-badge" value="4" aria-hidden="true">4</data>
-            </button>
+              <data id="qtyProduct" class="nav-action-badge" value="4" aria-hidden="true"
+                >4</data
+              >
+            </a>
           </li>
-
         </ul>
-
       </nav>
-
     </div>
   </header>
 
@@ -155,38 +165,8 @@
       <div class="container">
     
         <section id="cart"> 
-          <article class="product">
-            <header>
-              <a class="remove">
-                <img  id="img" src="http://www.astudio.si/preview/blockedwp/wp-content/uploads/2012/08/1.jpg" alt="">
-    
-                <h3>Remove product</h3>
-              </a>
-            </header>
-    
-            <div class="content">
-    
-              <h1 id="name">Lorem ipsum</h1>
-    
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Soluta, numquam quis perspiciatis ea ad omnis provident laborum dolore in atque.
-    
-              <div title="You have selected this product to be shipped in the color yellow." style="top: 0" class="color yellow"></div>
-              <div style="top: 43px" class="type small">XXL</div>
-            </div>
-    
-            <footer class="content">
-              <span class="qt-minus">-</span>
-              <span class="qt">2</span>
-              <span class="qt-plus">+</span>
-    
-              <h2 class="full-price">
-                29.98€
-              </h2>
-    
-              <h2 class="price">
-                14.99€
-              </h2>
-            </footer>
+          <article class="product" id="product">
+            
           </article>
     
           
@@ -198,14 +178,14 @@
       
         <div class="container clearfix">
     
-          <div class="left">
+          <!-- <div class="left">
             <h2 class="subtotal">Subtotal: 163.96 €</h2>
             <h3 class="tax">Taxes (5%): 8.2 €</h3>
             <h3 class="shipping">Shipping: 5.00 €</h3>
-          </div>
+          </div> -->
     
           <div class="right">
-            <h1 class="total">Total: 177.16 €</h1>
+            <!-- <h1 class="total">Total: 177.16 €</h1> -->
             <a class="btn" onclick="createCart()">Checkout</a>
           </div>
     
@@ -410,15 +390,7 @@
       </div>
     </div>
 
-    <div class="footer-bottom">
-      <div class="container">
-
-        <p class="copyright">
-          &copy; 2022 <a href="#" class="copyright-link">codewithsadee</a>. All Rights Reserved
-        </p>
-
-      </div>
-    </div>
+    
 
   </footer>
 
@@ -446,6 +418,7 @@
     crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
   <script src="../assets/js/script.js"></script>
+  <script src="../controllers/auth.js"></script>
   <script src="../assets/js/cart.js"></script>
   <script src="../models/productCart.js"></script>
   <script src="../services/serviceProducts.js"></script>

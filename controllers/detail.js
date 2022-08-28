@@ -113,6 +113,7 @@ function showQty(arr) {
     for (let i = 0; i < arr.length; i++) {
       quantity += arr[i].quantity;
     }
+    console.log(quantity);
     getEle("qtyProduct").innerHTML = quantity;
   } else {
     getEle("qtyProduct").innerHTML = 0;

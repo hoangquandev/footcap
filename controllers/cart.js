@@ -104,7 +104,7 @@ function renderOrders(list){
 
 
 const deleteCartID = (id) => {
-    
+    // console.log(id);
     qlsp.deleteCart(token,id)
     .then(function(res){
         alert(res.data);
