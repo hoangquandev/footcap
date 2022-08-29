@@ -50,20 +50,34 @@ const upDate = () => {
     let email = getEle("email").value
     let age = parseInt(getEle("age").value)
 
-    let data = {
-        "name": name,
-        "email": email,
-        "password": password,
-        "age": age
+    if( password == ''){
+        getEle('checkPass').innerHTML = 'PassWord không được rỗng'
+        getEle('checkPass').style.color = 'red'
+    }else if(password.length<8){
+        getEle('checkPass').innerHTML = 'PassWord tối thiểu 8 kí tự'
+        getEle('checkPass').style.color = 'red'
+    }else{
+        let data = {
+            "name": name,
+            "email": email,
+            "password": password,
+            "age": age
+        }
+        return data
     }
-    return data
+
+    
     
 
 
 }
 
-const update = (id) => {
+const update = () => {
+    // console.log( window.location.href.split('?id='));
+    let id=window.location.href.split('?id=')[1]
+    console.log(id);
     var token12 = JSON.parse(localStorage.getItem('LOGIN')).token
+    console.log(token12);
     let tok = ''
     qlsp.getUser(token12)
 
@@ -81,16 +95,12 @@ const update = (id) => {
         .catch(function (err) {
             console.log(err);
         })
-    qlsp.upDateUser(tok, upDate())
+    qlsp.upDateUser(token12, upDate(),id)
         .then(function (res) {
-            console.log(res.id);
+            alert("Thành công")
+            window.location.reload()
         })
         .catch(function (err) {
             console.log(err);
         })
 }
-
-
-
-
-

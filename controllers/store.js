@@ -118,11 +118,30 @@ function showQty() {
     for (let i = 0; i < listLocal.length; i++) {
       quantity += listLocal[i].quantity;
     }
-    console.log(quantity);
+    // console.log(quantity);
     getEle("qtyProduct").innerHTML = quantity;
   } else {
     getEle("qtyProduct").innerHTML = 0;
   }
 }
 showQty();
- 
+
+getEle('txtSearch').addEventListener('keyup',function(){
+  var keyWord = getEle('txtSearch').value
+  console.log(keyWord);
+  var arrSearch = []
+  qlsp.getAllProduct()
+  .then(function(res){
+    console.log(res.data);
+    for(let i = 0 ; i < res.data.length; i++){
+      if(res.data[i].name.toLowerCase().indexOf(keyWord.toLowerCase())!==-1){
+          arrSearch.push(res.data[i])
+      }
+  }
+      renderAllProduct(arrSearch);
+      
+  })
+  .catch(function(err){
+      console.log(err);
+  })
+})

@@ -1,17 +1,19 @@
-function Products(
-  name,
-  gender,
-  typeProduct,
-  description,
-  message,
-  color,
-  price,
-  img,
-  sizes,
-  imgDetails,
-  userCreated,
-  status
-  ) {
+function ProductUpdate(
+    id,
+    name,
+    gender,
+    typeProduct,
+    description,
+    message,
+    color,
+    price,
+    img,
+    sizes,
+    imgDetails,
+    userCreated,
+    status
+) {
+    this._id = id
     this.name = name;
     this.gender = gender;
     this.typeProduct = typeProduct;
@@ -24,6 +26,4 @@ function Products(
     this.imgDetails = imgDetails;
     this.userCreated = userCreated;
     this.status = status;
-  }
-  
-  
+}

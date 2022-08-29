@@ -13,7 +13,7 @@
     
 <div class="container" id="container">
 	<div class="form-container sign-up-container">
-		<form action="#">
+		<form action="">
 			<h1>Create Account</h1>
 			<div class="social-container">
 				<a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
@@ -22,9 +22,13 @@
 			</div>
 			<span>or use your email for registration</span>
 			<input id="txtName" type="text" placeholder="Name" />
+			<div id="checkName1"></div>
 			<input id="txtEmail" type="text" placeholder="Email" />
+			<div id="checkEmail1"></div>
 			<input id="txtPass" type="password" placeholder="Password" />
+			<div id="checkPass1"></div>
 			<input id="txtAge" type="number" placeholder="Age" />
+			<div id="checkAge1"></div>
 			<button onclick="getSignUp(event)">Sign Up</button>
 			
 		</form>
@@ -39,7 +43,9 @@
 			</div>
 			<span>or use your account</span>
 			<input id="txtEmail1" type="email" placeholder="Email" />
+			<div id="checkEmail"></div>
 			<input id="txtPass1" type="password" placeholder="Password" />
+			<div id="checkPass"></div>
 			<a href="#">Forgot your password?</a>
 			<button>Sign In</button>
 		</form>

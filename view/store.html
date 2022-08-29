@@ -6,6 +6,39 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Shop</title>
 
+    <style>
+      form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  border: 1px solid grey;
+  float: left;
+  width: 80%;
+  background: #f1f1f1;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 10px;
+  background: #2196F3;
+  color: white;
+  font-size: 17px;
+  border: 1px solid grey;
+  border-left: none;
+  cursor: pointer;
+}
+
+form.example button:hover {
+  background: #0b7dda;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+    </style>
+
     <!-- 
     - favicon
   -->
@@ -101,8 +134,11 @@
           <ul class="nav-action-list">
             <li>
               <button class="nav-action-btn">
-                <input type="text">
-                <ion-icon name="search-outline" aria-hidden="true"></ion-icon>
+                <form class="example" style="margin:auto;max-width:300px">
+                  <input id="txtSearch" type="text" placeholder="Search.." name="search2">
+                  <!-- <button type="submit"><i class="fa fa-search"></i></button> -->
+                </form>
+                <!-- <ion-icon name="search-outline" aria-hidden="true"></ion-icon> -->
                 
                 <span class="nav-action-text">Search</span>
               </button>
@@ -154,7 +190,9 @@
           <div class="container">
             <h2 class="h2 section-title">Products</h2>
 
-            <ul id="renderCategoryName" class="filter-list"></ul>
+            <ul id="renderCategoryName" class="filter-list">
+              
+            </ul>
 
             <ul id="showAllProduct" class="product-list"></ul>
           </div>

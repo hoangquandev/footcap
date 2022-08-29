@@ -8,7 +8,21 @@ const getSignUp = (event) => {
     let email = getEle('txtEmail').value
     let password = getEle('txtPass').value
     let age = parseInt(getEle('txtAge').value) 
+    let age1 = getEle('txtAge').value
     let userType = "user"
+    if (name == "") {
+        getEle("checkName1").innerHTML = "(*) name không được rỗng"
+        getEle("checkName1").style.color = "red"
+      }if (email == "") {
+        getEle("checkEmail1").innerHTML = "(*) Email không được rỗng"
+        getEle("checkEmail1").style.color = "red"
+      }if (password == "") {
+        getEle("checkPass1").innerHTML = "(*) Password không được rỗng"
+        getEle("checkPass1").style.color = "red"
+      }if (age1 == "") {
+        getEle("checkAge1").innerHTML = "(*) Age không được rỗng"
+        getEle("checkAge1").style.color = "red"
+      }
     var user = new Users(name, email, password, age, userType)
     qlsp.signUp(user)
     .then(function (res) {
@@ -27,7 +41,15 @@ const login = () => {
     let userName = getEle("txtEmail1").value;
     
     let passWord = getEle("txtPass1").value;
-    let listCart = []
+    if (userName == "") {
+        getEle("checkEmail").innerHTML = "(*) Name không được rỗng"
+        getEle("checkEmail").style.color = "red"
+      }
+      if (passWord == "") {
+        getEle("checkPass").innerHTML = "(*) PassWord không được rỗng"
+        getEle("checkPass").style.color = "red"
+      }else{
+        let listCart = []
     qlsp.signIn(userName,passWord)
         .then(function (res) {
             localStorage.setItem("LOGIN", JSON.stringify(res.data));
@@ -44,5 +66,7 @@ const login = () => {
         .catch(function (err) {
             alert("Email hoặc Password không chính xác");
         });
+      }
+    
 };
 

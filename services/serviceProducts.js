@@ -37,12 +37,12 @@ function ServiceProducts() {
       },
     });
   };
-  this.upDateUser = function (token, data) {
+  this.upDateUser = function (token, data, id) {
     return axios({
       method: "PUT",
-      url: `https://nike0403.herokuapp.com/users/update`,
+      url: `https://nike0403.herokuapp.com/users/updateAdmin/${id}`,
       headers: {
-        Authorization: `${token}`,
+        Authorization: `Bearer ${token}`,
       },
       data: data,
     });

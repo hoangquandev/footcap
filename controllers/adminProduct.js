@@ -48,62 +48,7 @@ const renderList = (data) => {
   getEle('tblProduct').innerHTML = content
 }
 
-// thêm Sản Phẩm
-/* function addProduct() {
-    let name = getEle("inputName").value;
-    let gender = getEle("inputGender").value;
-    let typeProduct = getEle("inputTypeProduct").value;
-    let description = getEle("inputDesc").value;
-    let message = getEle("inputMessage").value;
-    let color = parseInt(getEle("inputColor").value);
-    let price = parseInt(getEle("inputPrice").value);
-    let img = getEle("inputImage").value;
-    let sizes = [{
-        "size": "string"
-      }];
-    let imgDetails = [
-        {
-          "color": "string",
-          "imgs": [
-            {
-              "img": "string"
-            }
-          ]
-        }
-      ];
-      let userCreated = "string";
-      let status = 0;
-  
-    // var isValid = validation.kiemTraRong(tenSP,"TenSPErr","(*) ko dc rỗng")
-    // if(isValid == false){
-    //   isValid = validation.kiemTraRong(tenSP,"TenSPErr","(*) ko dc rỗng")
-    // }
-    // else{
-      var product = new Products(name,
-        gender,
-        typeProduct,
-        description,
-        message,
-        color,
-        price,
-        img,
-        sizes,
-        imgDetails,
-        userCreated,
-        status);
-      qlsp.addProducts(getLocalStorage(),product)
-      .then(function (res) {
-        console.log(res);
-      })
-      .catch(function (err) {
-        console.log(err);
-      });
-    // }
-   console.log(qlsp.getListProductAPI());
-  // return
-    
-    
-  } */
+
 
 // them sp
 function addProduct() {
@@ -112,8 +57,10 @@ function addProduct() {
   let typeProduct = getEle("inputTypeProduct").value;
   let description = getEle("inputDesc").value;
   let message = getEle("inputMessage").value;
-  let color = parseInt(getEle("inputColor").value);
+  let color = parseInt(getEle('inputColor').value);
+  let color1 = getEle('inputColor').value;
   let price = parseInt(getEle("inputPrice").value);
+  let checkPrice = getEle("inputPrice").value
   let img = getEle("inputImage").value;
   let sizes = [{
     "size": "XL"
@@ -123,13 +70,46 @@ function addProduct() {
       "color": "red",
       "imgs": [
         {
-          "img": "string"
+          "img": "https://d1hjkbq40fs2x4.cloudfront.net/2016-01-31/files/1045.jpg"
         }
       ]
     }
+
+
   ];
-  let userCreated = "200922";
+  let userCreated = JSON.parse(localStorage.getItem('LOGIN')).user._id;
   let status = 0;
+
+  // let isValid = false
+  if (name == "") {
+    getEle("checkName").innerHTML = "(*) Name không được rỗng"
+    getEle("checkName").style.color = "red"
+  }
+  if (gender == "") {
+    getEle("checkGender").innerHTML = "(*) Gender không được rỗng"
+    getEle("checkGender").style.color = "red"
+  }
+  if (typeProduct == "") {
+    getEle("checktype").innerHTML = "(*) typeProduct không được rỗng"
+    getEle("checktype").style.color = "red"
+  } if (description == "") {
+    getEle("checkDes").innerHTML = "(*) description không được rỗng"
+    getEle("checkDes").style.color = "red"
+  }
+  if (message == "") {
+    getEle("checkMess").innerHTML = "(*) message không được rỗng"
+    getEle("checkMess").style.color = "red"
+  } if (color1 == "") {
+    getEle("checkColor").innerHTML = "(*) color không được rỗng"
+    getEle("checkColor").style.color = "red"
+  } if (checkPrice == "") {
+    getEle("checkPrice").innerHTML = "(*) price không được rỗng"
+    getEle("checkPrice").style.color = "red"
+  } if (img == "") {
+    getEle("checkImg").innerHTML = "(*) img không được rỗng"
+    getEle("checkImg").style.color = "red"
+  }
+
   let product = new Products(name,
     gender,
     typeProduct,
@@ -142,22 +122,21 @@ function addProduct() {
     imgDetails,
     userCreated,
     status);
-    console.log(token);
-  qlsp.addProducts(`${token}`,product)
+
+
+
+
+  qlsp.addProducts(token, product)
     .then(function (res) {
       // console.log(token);
       alert("Add successful")
-      console.log(res);
+      window.location.reload()
+
     })
     .catch(function (err) {
-      alert("Add fail " + err)
+      // kiemTraRong(name,"checkVali","(*)Name không được rỗng")
       console.log(err);
     });
-  // }
-  // console.log(qlsp.getListProductAPI());
-  // return
-
-
 }
 // addProduct()
 
@@ -169,7 +148,7 @@ function deleteProducts(token, id) {
       alert(res.data)
     })
     .catch(function (err) {
-console.log(err);
+      console.log(err);
     })
 }
 //sua sp
@@ -203,12 +182,12 @@ function updateProducts() {
     {
       "size": "XL"
     }
-  ] 
+  ]
   let imgDetails = []
   let status = 0
   let gender = "shoes"
   let userCreated = "24/8/2022"
-  let product = new Products(_id, name, gender, typeProduct, description, message, color, price, img, sizes, imgDetails, userCreated, status)
+  let product = new ProductUpdate(_id, name, gender, typeProduct, description, message, color, price, img, sizes, imgDetails, userCreated, status)
   let token1 = JSON.parse(localStorage.getItem("LOGIN")).token
   console.log(token1);
   qlsp.updateProduct(token1, product, _id)
@@ -220,3 +199,22 @@ function updateProducts() {
       console.log(err);
     })
 }
+getEle('txtSearch').addEventListener('keyup', function () {
+  let keyWord = getEle('txtSearch').value
+  // console.log(keyWord);
+  var arrSearch = []
+  qlsp.getAllProduct()
+    .then(function (res) {
+      // console.log(res.data);
+      for (let i = 0; i < res.data.length; i++) {
+        if (res.data[i].name.toLowerCase().indexOf(keyWord.toLowerCase()) !== -1) {
+          arrSearch.push(res.data[i])
+        }
+      }
+      renderList(arrSearch);
+
+    })
+    .catch(function (err) {
+      console.log(err);
+    })
+})
