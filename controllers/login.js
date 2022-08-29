@@ -27,7 +27,7 @@ const getSignUp = (event) => {
     qlsp.signUp(user)
     .then(function (res) {
         localStorage.setItem("LOGIN", JSON.stringify(res.data)); 
-        window.location.assign('../view/index.html')
+        window.location.assign('./index.html')
         
     })
     .catch(function (err) {
@@ -59,7 +59,7 @@ const login = () => {
             if(data==="admin"){
                 window.location.assign("../admin/index.html")
             }else{
-                window.location.assign("../view/index.html");
+                window.location.assign("./index.html");
             }
             
         })
