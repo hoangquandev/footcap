@@ -189,7 +189,7 @@ function updateProducts() {
   let userCreated = "24/8/2022"
   let product = new ProductUpdate(_id, name, gender, typeProduct, description, message, color, price, img, sizes, imgDetails, userCreated, status)
   let token1 = JSON.parse(localStorage.getItem("LOGIN")).token
-  console.log(token1);
+  // console.log(token1);
   qlsp.updateProduct(token1, product, _id)
     .then(function (rs) {
       alert("updatesuccess")
